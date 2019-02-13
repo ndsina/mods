@@ -1,0 +1,26 @@
+<?php
+/** @var \GoMage\AdditionalProducts\Block\Adminhtml\Category\AdditionalProducts $block */
+
+/** @var \Magento\Catalog\Block\Adminhtml\Category\Tab\Product $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?php  echo $block->getGridHtml(); ?>
+<input type="hidden"
+       name="category_products_grid"
+       id="in_category_products_grid"
+       data-form-part="category_form"
+       value="" />
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "GoMage_AdditionalProducts/catalog/category/additional-products": {
+                "additionalProducts": <?php /* @escapeNotVerified */ echo $block->getProductsJson(); ?>,
+                "gridJsObjectName": <?php /* @escapeNotVerified */ echo '"' . $gridJsObjectName . '"' ?: '{}'; ?>
+            }
+        }
+    }
+</script>
+<script>
+    require('mage/apply/main').apply();
+</script>
