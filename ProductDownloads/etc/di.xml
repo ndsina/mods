@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Image\AdapterFactory">
+        <arguments>
+            <argument name="adapterMap" xsi:type="array">
+                <item name="IMAGEMAGICK" xsi:type="array">
+                    <item name="title" xsi:type="string">ImageMagick</item>
+                    <item name="class" xsi:type="string">GoMage\ProductDownloads\Model\Image\Adapter\ImageMagick</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

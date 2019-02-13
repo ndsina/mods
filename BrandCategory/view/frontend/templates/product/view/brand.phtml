@@ -1,0 +1,24 @@
+<?php
+/**
+ *
+ * @var $block \GoMage\BrandCategory\Block\Product\View\Brand
+ */
+?>
+<?php if($data = $block->getDataBrand(180, 180)): ?>
+    <div class="b-brand-info">
+        <div class="b-brand-info-img">
+            <a href="<?php /* @escapeNotVerified */ echo $data->getUrl(); ?>">
+                <img src="<?php /* @escapeNotVerified */ echo $data->getImage(); ?>"
+                     alt="<?php /* @escapeNotVerified */ echo $data->getBrand(); ?>"
+                     width="180"
+                     height="180"
+                />
+            </a>
+        </div>
+        <div class="b-brand-info-link">
+            <a href="<?php /* @escapeNotVerified */ echo $data->getCategory()->getUrl(); ?>">
+                <?php /* @escapeNotVerified */ echo __('View all '); ?> (<?php /* @escapeNotVerified */ echo $data->getCategory()->getName(); ?>)
+            </a>
+        </div>
+    </div>
+<?php endif;?>

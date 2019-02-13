@@ -1,0 +1,29 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**
+ *
+ * @var $block \GoMage\ProductTags\Block\Product\View\Tags
+ */
+
+$productTags = $block->getProductTags();
+?>
+<?php if ($productTags): ?>
+<div class="block-title title">
+    <strong aria-level="2" role="heading"><?php /* @escapeNotVerified */ echo __('Find Related Products'); ?></strong>
+</div>
+<div class="product-tags-content">
+    <ul>
+    <?php foreach ($productTags as $tag): ?>
+    <?php if ($tag): ?>
+        <li>
+            <a href="<?php /* @escapeNotVerified */ echo $block->getSearchResultUrl($tag); ?>">
+                <?php /* @escapeNotVerified */ echo __($tag); ?>
+            </a>
+        </li>
+    <?php endif; ?>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="GoMage_ProductDownloads::css/product-downloads.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="gomage.product.info.downloads" label="Product info container downloads" htmlTag="div"
+                       htmlClass="product-info-downloads" after="-">
+                <block class="GoMage\ProductDownloads\Block\Product\View\Downloads" name="gomage.product.downloads"
+                       template="GoMage_ProductDownloads::product/view/downloads.phtml">
+                    <block class="GoMage\ProductDownloads\Block\Product\View\Downloads\Pdf"
+                           name="gomage.product.downloads.pdf" as="gomage.product.downloads.pdf"
+                           template="GoMage_ProductDownloads::product/view/downloads/pdf.phtml"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

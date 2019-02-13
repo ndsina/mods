@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <gomage_catalog>
+            <brand_category>
+                <enabled>1</enabled>
+                <brand_attribute_code>brand</brand_attribute_code>
+            </brand_category>
+        </gomage_catalog>
+    </default>
+</config>

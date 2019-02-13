@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="gomage_postcode" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Post Code</label>
+            <tab>gomage</tab>
+            <resource>GoMage_PostCode::gomage_postcode</resource>
+            <group id="gomage_postcode_group" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Post Code</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="enabled_zip_caching" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled Zip Caching</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="region_ids" translate="label comment" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>The "Call for quote" regions</label>
+                    <comment>Please select region to show the "Call for quote"</comment>
+                    <source_model>Magento\Directory\Model\Config\Source\Allregion</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                
+                <field id="additional_zips" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional Postcodes for the "Call for quote"</label>
+                    <comment>Zip codes separated by the ";" symbol. Eg: "99554; 99689; 99629"</comment>
+                </field>
+
+                <field id="google_api_key" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google API Key</label>
+                </field>
+
+                <field id="api_mode" translate="label" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Mode</label>
+                    <source_model>GoMage\PostCode\Model\Source\Mode</source_model>
+                    <comment>If not selected, all apis will be used in order.</comment>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+
+                <field id="disable_address_fields" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Address Fields</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

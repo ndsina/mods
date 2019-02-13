@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="GoMage_ProductTags::css/product-tags.css"/>
+    </head>
+    <body>
+        <referenceContainer name="main">
+            <container name="product.tags" htmlTag="div" htmlClass="product-tags" before="content.bottom">
+                <block class="GoMage\ProductTags\Block\Product\View\Tags"
+                       after="-"
+                       name="gomage.product.tags" template="GoMage_ProductTags::product/view/product_tags.phtml"
+                       ifconfig="catalog/search/enable_tags"
+                />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

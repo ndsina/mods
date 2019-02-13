@@ -1,0 +1,89 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \GoMage\ProductDownloads\Block\Adminhtml\Catalog\Product\Edit\Downloads */
+$element = $block->getElement();
+$_htmlId = $block->getElement()->getHtmlId();
+$_htmlClass = $block->getElement()->getClass();
+$_htmlName = $block->getElement()->getName();
+/** @var \GoMage\ProductDownloads\Model\Catalog\Product\Attribute\Downloads $values */
+$values = $block->getValues();
+?>
+<div class="field">
+    <label class="label"><span><?php echo __('Specification Sheet'); ?></span></label>
+    <div class="control">
+        <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $values->getSpecification(); ?>"
+               name="<?php echo $_htmlName; ?>[specification]" />
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Brochure / Sell Sheet'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getBrochure() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[brochure][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Parts / Catalog List'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getParts() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[parts][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Service Manual'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getServiceManual() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[service_manual][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Owner Manual'); ?></span></label>
+    <div class="control">
+        <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $values->getOwnerManual(); ?>"
+               name="<?php echo $_htmlName; ?>[owner_manual]" />
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Video, Service Manual'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getVideo() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[video][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('CAD Drawings'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getCad() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[cad][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Diagram'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getDiagram() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[diagram][]" />
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="field">
+    <label class="label"><span><?php echo __('Service Bulletin'); ?></span></label>
+    <div class="control">
+        <?php foreach ($values->getBulletin() as $value): ?>
+            <input type="text" class="<?php echo $_htmlClass; ?>" value="<?php echo $value; ?>"
+                   name="<?php echo $_htmlName; ?>[bulletin][]" />
+        <?php endforeach; ?>
+    </div>
+</div>

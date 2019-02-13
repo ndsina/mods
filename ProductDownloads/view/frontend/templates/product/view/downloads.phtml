@@ -1,0 +1,104 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**
+ *
+ * @var $block \GoMage\ProductDownloads\Block\Product\View\Downloads
+ */
+$downloads = $block->getDownloads();
+/** @var \Magento\Catalog\Model\Product $product */
+$product = $block->getProduct();
+/** @var \GoMage\ProductDownloads\Block\Product\View\Downloads\Pdf $pdfBlock */
+$pdfBlock = $block->getChildBlock('gomage.product.downloads.pdf');
+$pdfBlock->setProductRemovePreviews($product->getRemovePdfPreviews());
+
+$elements = [
+    'getBrochure' => __('Brochure / Sell Sheet'),
+    'getParts' => __('Parts / Catalog List'),
+    'getServiceManual' => __('Service Manual'),
+    'getVideo' => __('Video, Service Manual'),
+    'getCad' => __('CAD Drawings'),
+    'getDiagram' => __('Diagram'),
+    'getBulletin' => __('Service Bulletin')
+];
+
+?>
+<?php if ($block->isActive()): ?>
+    <ul>
+        <?php if ($url = $block->getSpecs()): ?>
+            <li>
+                <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($url)
+                    ->setTitle(__('Specification Sheet'))
+                    ->setComment(__("A PDF viewer is required to view this product's information."))
+                    ->setLinkTitle(__("Download Manufacturer's Specification Sheet"))
+                    ->toHtml();?>
+            </li>
+        <?php endif; ?>
+        <?php if ($url = $block->getFeatures()): ?>
+            <li>
+                <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($url)
+                    ->setTitle(__('Exclusive Features'))
+                    ->setComment(__("A PDF viewer is required to view this product's information."))
+                    ->setLinkTitle(__("Download Exclusive Features pdf"))
+                    ->toHtml();
+                ?>
+            </li>
+        <?php endif; ?>
+        <?php if ($url = $block->getManual()): ?>
+            <li>
+                <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($url)
+                    ->setTitle(__('Owners Manual'))
+                    ->setComment(__("A PDF viewer is required to view this product's information."))
+                    ->setLinkTitle(__("Download Owners Manual"))
+                    ->toHtml();
+                ?>
+            </li>
+        <?php endif; ?>
+        <?php if (!$downloads->isEmpty() && $block->getShowAll()): ?>
+            <?php if ($url = $downloads->getSpecification()): ?>
+                <li>
+                    <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($url)
+                        ->setTitle(__('Specification Sheet'))
+                        ->setComment('')
+                        ->setLinkTitle('')
+                        ->toHtml();
+                    ?>
+                </li>
+            <?php endif; ?>
+            <?php if ($link = $downloads->getOwnerManual()): ?>
+                <li>
+                    <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($link)
+                        ->setTitle(__('Owner Manual'))
+                        ->setComment('')
+                        ->setLinkTitle('')
+                        ->toHtml();
+                    ?>
+                </li>
+            <?php endif; ?>
+            <?php foreach ($elements as $function => $title): ?>
+                <?php if ($elms = $downloads->$function(true)): ?>
+                <li>
+                    <span><?php /* @escapeNotVerified */ echo $title ?>:</span>
+                    <ul>
+                        <?php foreach($elms as $link): ?>
+                            <li>
+                                <?php /* @escapeNotVerified */ echo $pdfBlock->setDocUrl($link)
+                                    ->setTitle('')
+                                    ->setComment('')
+                                    ->setLinkTitle('')
+                                    ->toHtml();
+                                ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>
+<?php
+/** Set flag to false after generating previews */
+$product->addAttributeUpdate('remove_pdf_previews', false, $product->getStoreId());
+?>

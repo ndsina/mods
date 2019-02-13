@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="gomage" translate="label" sortOrder="1000">
+            <label>GoMage</label>
+        </tab>
+        <section id="gomage_sms" translate="label" type="text" sortOrder="10"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sms notification</label>
+            <tab>gomage</tab>
+            <resource>GoMage_SmsNotification::config_sms</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <comment>
+                    <![CDATA[
+                <a href="https://manage.clxcommunications.com/accounts" target="_blank">Click here to login to your existing CLX account</a>.<br>
+                Or to setup a new account and get username and token for your site, <a href="https://www.clxcommunications.com/signup/" target="_blank">Click here to signup for a CLX account</a>.
+                    ]]>
+                </comment>
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="username" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Username</label>
+                    <comment>Username for CLX REST API</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="token" translate="label comment" type="obscure" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>API Token</label>
+                    <comment>Token for CLX REST API</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="sender_number" translate="label comment" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Sender number</label>
+                    <comment>Must be valid MSISDN, short code or alphanumeric</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="sms_body" translate="label comment" type="textarea" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Sms body</label>
+                    <comment>
+                        <![CDATA[
+                        Max 1600 chars.
+                        <a href="https://manage.clxcommunications.com/developers/sms/http-rest.html#using-unicode-characters"
+                           target="_blank">
+                            More info.
+                        </a><br />
+                        You can use the following variables inside the body:<br />
+                        {PRODUCT_NAME}, {PRODUCT_URL}, {PRODUCT_SKU}, {PRODUCT_PRICE}, {YOUR_PRICE}, {CART_URL}
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="sms_block_settings" translate="label" type="text" sortOrder="20" showInDefault="1"
+                   showInWebsite="1" showInStore="1">
+                <label>Sms block settings</label>
+                <field id="block_title" translate="label" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Block Title</label>
+                </field>
+                <field id="block_text" translate="label" type="textarea" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Block text</label>
+                </field>
+                <field id="block_enabled_country_code" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enabled country code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="block_default_country_code" translate="label comment" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Default country code</label>
+                    <comment>Country code which will be used by default if code is not filled in or disabled.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

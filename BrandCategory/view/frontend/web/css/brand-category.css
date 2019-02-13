@@ -1,0 +1,25 @@
+.b-brand-info{
+  border-radius: 4px;
+  border: solid 1px #dee2e5;
+  padding: 20px;
+  margin: 0 0 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.b-brand-info-img{
+  margin: 0 0 18px;
+}
+.b-brand-info-img img{
+  vertical-align: top;
+}
+.b-brand-info-link{
+  font-size: 16px;
+  font-weight: 600;
+}
+.b-brand-info-link a{
+  color: #3c4650;
+  text-decoration: none;
+}
+.b-brand-info-link a:hover{
+  color: #1774d1;
+}

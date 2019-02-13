@@ -1,0 +1,101 @@
+/* Sms Product Page
+-------------------------------------------------- */
+
+/* Sms title */
+.b-sms-pp .sms-title{
+  color: #cf3700;
+  font-size: 24px;
+  line-height: 1.17;
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+.b-sms-pp .sms-title a{
+  text-decoration: none;
+  color: #555754;
+}
+.b-sms-pp .sms-title a:hover{
+  text-decoration: underline;
+}
+
+
+/* Sms fields */
+.b-sms-pp-fields{
+  margin-bottom: 10px;
+}
+.b-sms-pp-fields .field{
+  margin-right: 65px;
+}
+.b-sms-pp-fields .actions{
+  float: right;
+  width: 65px;
+}
+.b-sms-pp-fields .actions .action{
+  width: 100%;
+  border-radius: 0 3px 3px 0;
+}
+.b-sms-pp-fields:after{
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+
+
+/* Sms text */
+.b-sms-pp .sms-text{
+  margin-bottom: 10px;
+}
+.b-sms-pp .sms-text a{
+  color: #298200;
+}
+
+/* Sms block styles
+-------------------------------------------------- */
+.sms-fields{
+  margin: 0 0 10px;
+}
+.sms-fields:after{
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+.sms-fields .actions{
+  float: right;
+  width: 110px;
+}
+.sms-fields .actions .action{
+  border-radius: 0 3px 3px 0;
+  width: 100%;  
+}
+.sms-fields .field.sms{
+  margin-right: 110px;
+}
+.sms-fields .field.sms .control input{
+  border-right: 0 none;
+  height: 32px;
+}
+.sms-fields .field.sms .control input.sms-number{
+  width: 75%;
+}
+.sms-fields .field.sms .control input.sms-country{
+  float: left;
+  width: 25%;
+  text-align: right;
+}
+.sms-fields .field.sms .control input.sms-country[disabled]{
+  opacity: 1;
+  color: #333;
+}
+.block.b-sms-pp{
+  margin-bottom: 0 !important;
+  clear: both;
+}
+/* Sms block styles END
+-------------------------------------------------- */

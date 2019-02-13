@@ -1,0 +1,99 @@
+<?php
+/**
+ *
+ * @var $block \GoMage\SmsNotifications\Block\Catalog\Product\View\Sms
+ */
+$regExp = '/^\+?(?:[0-9][ |-]?){6,14}[0-9]$/';//$block->getRegExp(); //'/\+?\d[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{2}[-\s]?\d{2}/g';
+?>
+<?php if ($block->isActive()): ?>
+<div class="block b-sms-pp">
+    <div class="content">
+        <div class="sms-title">
+            <?php /* @escapeNotVerified */ echo $block->getSmsTitle(); ?>
+        </div>
+        <form class="form sms"
+              novalidate
+              action="<?php echo $block->getFormActionUrl() ?>"
+              method="post"
+              data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+              id="sms-validate-detail">
+
+            <input type="hidden" name="product_id"
+                   value="<?php /* @escapeNotVerified */ echo $block->getProduct()->getId() ?>" />
+
+            <div class="sms-fields">
+              <div class="actions">
+                  <button class="action map primary"
+                          title="<?php /* @escapeNotVerified */ echo __('Send SMS') ?>" type="submit">
+                      <span>
+                          <?php /* @escapeNotVerified */ echo __('Send SMS') ?>
+                      </span>
+                  </button>
+              </div>
+              <div class="field sms">
+                  <div class="control">
+                      <input name="country" type="text" id="sms_country"
+                             value="<?php /* @escapeNotVerified */ echo $block->getSmsCountryCode(); ?>"
+                             class="sms-country"
+                             placeholder="<?php /* @escapeNotVerified */ echo __('Country code'); ?>"
+                             data-validate="{
+                                required: <?php /* @escapeNotVerified */ echo $block->getIsSmsCountryCodeEnabled(); ?>
+                             }"
+                            <?php if (!$block->getIsSmsCountryCodeEnabled()): ?>
+                             disabled="disabled"
+                            <?php endif; ?>
+                      />
+                      <input name="phone" type="tel" id="sms_phone"
+                             class="sms-number"
+                             placeholder="<?php /* @escapeNotVerified */ echo __('Enter your phone number') ?>"
+                             data-validate="{required: true, 'validate-sms-phone-number': true}"
+                      />
+                  </div>
+              </div>
+            </div>
+        </form>
+        <div class="sms-text">
+            <?php /* @escapeNotVerified */ echo $block->getSmsText(); ?>
+        </div>
+        <div class="sms-success-error" id="sms-content"></div>
+    </div>
+</div>
+<script>
+    require([
+        "jquery",
+        "mage/translate"
+    ], function ($) {
+        $(document).on('submit', '#sms-validate-detail', function () {
+            var productForm = $('#product_addtocart_form');
+            if (!productForm.validation('isValid')){
+                return false;
+            }
+            var data = productForm.serializeArray();
+            data = $.grep(data, function(item){
+                return $.inArray(item.name, ['product', 'related_product', 'form_key', 'qty']) == -1;
+            });
+
+            var form = $(this);
+            data = $.merge(data, form.serializeArray());
+            data = $.param(data);
+
+            $.ajax({
+                url: form.attr('action'),
+                data: data,
+                type: 'post',
+                dataType: 'json',
+                beforeSend: function () {
+                    $('body').trigger('processStart');
+                },
+                success: function (res) {
+                    $('body').trigger('processStop');
+                    if (res.success) {
+                        $('#sms-content').html(res.content);
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<?php endif; ?>

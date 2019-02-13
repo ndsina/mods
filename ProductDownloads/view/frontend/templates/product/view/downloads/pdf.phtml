@@ -1,0 +1,37 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**
+ *
+ * @var $block \GoMage\ProductDownloads\Block\Product\View\Downloads\Pdf
+ */
+
+$docUrl = $block->getDocUrl();
+$imageUrl = $block->getImageUrl();
+
+?>
+<?php if ($title = $block->getTitle()): ?>
+    <span>
+        <?php /* @escapeNotVerified */ echo $title; ?>:
+    </span>
+<?php endif; ?>
+<?php if ($comment = $block->getComment()): ?>
+    <p>
+        <?php /* @escapeNotVerified */ echo $comment; ?>:
+    </p>
+<?php endif; ?>
+<?php if ($imageUrl): ?>
+<div class="b-product-downloads-img">
+    <a target="_blank" href="<?php echo $docUrl; ?>">
+       <img src="<?php echo $imageUrl; ?>" alt="" />
+    </a>
+</div>
+<?php endif; ?>
+<a class="b-product-downloads-link" target="_blank" href="<?php /* @escapeNotVerified */ echo $docUrl ?>">
+<?php if ($linkTitle = $block->getLinkTitle()): ?>
+    <?php /* @escapeNotVerified */ echo $linkTitle; ?>
+<?php else: ?>
+    <?php /* @escapeNotVerified */ echo __('Download'); ?>
+<?php endif; ?>
+</a>

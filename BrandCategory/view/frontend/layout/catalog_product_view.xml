@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="GoMage_BrandCategory::css/brand-category.css"/>
+    </head>
+    <body>
+        <referenceContainer name="product.right.col">
+            <block class="GoMage\BrandCategory\Block\Product\View\Brand" name="gomage.product.brand"
+                   template="GoMage_BrandCategory::product/view/brand.phtml"
+                   ifconfig="gomage_catalog/brand_category/enabled"/>
+        </referenceContainer>
+    </body>
+</page>

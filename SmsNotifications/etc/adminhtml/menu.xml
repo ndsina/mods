@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="GoMage_SmsNotifications::sent_sms" title="Sent SMS" translate="title"
+             module="GoMage_SmsNotifications" sortOrder="50"
+             dependsOnModule="Magento_Catalog" resource="GoMage_SmsNotifications::sent_sms"
+             parent="Magento_Catalog::inventory" action="gomage_sms/sms/"/>
+    </menu>
+</config>
